@@ -79,12 +79,14 @@ Assert::same(
 try {
 	$fluent = $conn->select('*')->from('table')->fetch();
 } catch (Exception $e) {
-	Assert::fail('Error occurred during fetch');
 }
-Assert::same(
-	reformat(' SELECT * FROM [table] LIMIT 1'),
-	dibi::$sql
-);
+
+if (!isset($e)) {
+	Assert::same(
+		reformat(' SELECT * FROM [table] LIMIT 1'),
+		dibi::$sql
+	);
+}
 
 
 $fluent = $conn->select('*')
