@@ -315,11 +315,10 @@ class DibiFluent extends DibiObject implements IDataSource
 	 */
 	public function fetch()
 	{
-		if ($this->command === 'SELECT' && $this->clauses['LIMIT'] === NULL) {
-			return $this->query($this->_export(NULL, array('%lmt', 1)))->fetch();
-		} else {
-			return $this->query($this->_export())->fetch();
+		if ($this->command === 'SELECT') {
+			$this->limit(1);
 		}
+		return $this->query($this->_export())->fetch();
 	}
 
 
