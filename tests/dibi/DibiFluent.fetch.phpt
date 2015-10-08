@@ -83,5 +83,5 @@ Assert::equal(new DibiRow(array('customer_id' => num(4), 'name' => 'Holly')), $f
 $fluent->removeClause('select')->select('name')->limit(1);
 Assert::equal('Holly', $fluent->fetchSingle());
 
-$fluent->limit(1)->limit(1);
+$fluent = $conn->select('name')->from('customers')->limit(1)->offset(3)->limit(1);
 Assert::equal(new DibiRow(array('name' => 'Holly')), $fluent->fetch());
