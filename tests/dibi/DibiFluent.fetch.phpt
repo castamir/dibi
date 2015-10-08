@@ -77,5 +77,8 @@ Assert::equal(new DibiRow(array('customer_id' => num(4), 'name' => 'Holly')), $f
 $fluent->removeClause('limit')->limit('%i', '1');
 Assert::equal(new DibiRow(array('customer_id' => num(4), 'name' => 'Holly')), $fluent->fetch());
 
-$fluent->removeClause('select')->select('name');
+$fluent->removeClause('limit');
+Assert::equal(new DibiRow(array('customer_id' => num(4), 'name' => 'Holly')), $fluent->fetch());
+
+$fluent->removeClause('select')->select('name')->limit(1);
 Assert::equal('Holly', $fluent->fetchSingle());
