@@ -69,13 +69,13 @@ Assert::same(
 	(string) $fluent
 );
 
-Assert::equal(new DibiRow(array('customer_id' => 4, 'name' => 'Holly')), $fluent->fetch());
+Assert::equal(new DibiRow(array('customer_id' => num(4), 'name' => 'Holly')), $fluent->fetch());
 
 $fluent->removeClause('limit')->limit(2);
-Assert::equal(new DibiRow(array('customer_id' => 4, 'name' => 'Holly')), $fluent->fetch());
+Assert::equal(new DibiRow(array('customer_id' => num(4), 'name' => 'Holly')), $fluent->fetch());
 
 $fluent->removeClause('limit')->limit('%i', '1');
-Assert::equal(new DibiRow(array('customer_id' => 4, 'name' => 'Holly')), $fluent->fetch());
+Assert::equal(new DibiRow(array('customer_id' => num(4), 'name' => 'Holly')), $fluent->fetch());
 
 $fluent->removeClause('select')->select('name');
 Assert::equal('Holly', $fluent->fetchSingle());
