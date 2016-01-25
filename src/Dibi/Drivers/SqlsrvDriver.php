@@ -316,7 +316,7 @@ class SqlsrvDriver implements Dibi\Driver, Dibi\ResultDriver
 				throw new Dibi\NotSupportedException('Offset is not supported by this database.');
 
 			} elseif ($limit !== NULL) {
-				$sql = sprintf('SELECT TOP (%d)  * FROM (%s) t', $limit, $sql);
+				$sql = sprintf('SELECT TOP (%d) * FROM (%s) t', $limit, $sql);
 			}
 
 		} elseif ($limit !== NULL) {
