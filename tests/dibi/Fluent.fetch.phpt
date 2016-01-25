@@ -28,7 +28,7 @@ Assert::equal([
 
 
 // more complex association array
-if ($config['system'] !== 'odbc') {
+if ($config['system'] !== 'odbc' && $config['system'] !== 'sqlsrv') {
 	$res = $conn->select(['products.title' => 'title', 'customers.name' => 'name'])->select('orders.amount')->as('amount')
 		->from('products')
 		->innerJoin('orders')->using('(product_id)')

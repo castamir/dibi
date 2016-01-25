@@ -63,7 +63,7 @@ Assert::equal([
 // more complex association array
 function query($conn) {
 
-	return $conn->query($conn->getConfig('system') === 'odbc' ? '
+	return $conn->query($conn->getDriver() instanceof \Dibi\Drivers\SqlsrvDriver ? '
 		SELECT products.title, customers.name, orders.amount
 		FROM ([products]
 		INNER JOIN [orders] ON [products.product_id] = [orders.product_id])
